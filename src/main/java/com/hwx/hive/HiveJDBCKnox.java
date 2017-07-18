@@ -56,7 +56,7 @@ public class HiveJDBCKnox {
 		//For knox connection to work, need to import appropriate SSL cert to the java truststore
 		//For windows:- 
 		//C:\Program Files\Java\jdk1.8.0_111\jre\lib\security>keytool +
-		//  -importcert -file C:\Users\t93koai\Documents\nylpublic_cert.cer -keystore cacerts  -alias "forknox"
+		//  -importcert -file C:\Users\tiduserknox\Documents\public_cert.cer -keystore cacerts  -alias "forknox"
 		
 /*		KeyStore keyStore = KeyStore.getInstance("JKS");
 		String fileName = System.getProperty("java.home") + 
@@ -76,12 +76,8 @@ public class HiveJDBCKnox {
 		hdpConfig.set("hadoop.security.authentication", "Kerberos");
 		UserGroupInformation.setConfiguration(hdpConfig);
 
-		//UserGroupInformation.loginUserFromKeytab("T93KOAI@HQ.NT.NEWYORKLIFE.COM", "C:\\Users\\t93koai\\Documents\\hive_jars\\t93koai.keytab");
-
-
 		// This is the knox connection string, needs ca cert to be imported into the java truststore being used
-		Connection con = DriverManager.getConnection("jdbc:hive2://knox.prod.hdp.newyorklife.com/;ssl=true;transportMode=http;httpPath=gateway/default/hive","T93KOAI","Monday15");
-		//Connection con = DriverManager.getConnection("jdbc:hive2://ha21p04mn.prod.hdp.newyorklife.com:10001/default;principal=hive/ha21p04mn.prod.hdp.newyorklife.com@PROD.HDP.NEWYORKLIFE.COM;transportMode=http;httpPath=cliservice");
+		Connection con = DriverManager.getConnection("jdbc:hive2://knox.prod.hdp.hortonworks.com/;ssl=true;transportMode=http;httpPath=gateway/default/hive","tiduserknox","tiduserpasswordknox");
 		
 		Statement stmt = con.createStatement();
 		String sql = ("show databases");
@@ -115,11 +111,8 @@ public class HiveJDBCKnox {
 		    	
 	        }
 	        System.out.println(row);
-	        //rows.add(row);
 	    }
-	    //String fileNamePostFix = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
-        //Path file = Paths.get(URI.create("file:///"+var_outputFolder+"hive_output"+fileNamePostFix+".out"));
-        //Files.write(file, rows, Charset.forName("UTF-8"));
+
 		}
 	}
 	

@@ -107,13 +107,8 @@ public class hiveJDBCV1 {
 		org.apache.hadoop.conf.Configuration hdpConfig = new org.apache.hadoop.conf.Configuration();
 		hdpConfig.set("hadoop.security.authentication", "Kerberos");
 		UserGroupInformation.setConfiguration(hdpConfig);
-		//UserGroupInformation.loginUserFromKeytab(var_userPrincipal, var_keytabLoc);
-		//UserGroupInformation.loginUserFromKeytab("ambari-qa-tech@TECH.HDP.NEWYORKLIFE.COM", "C:\\Users\\t93koai\\Documents\\hive_jars\\smokeuser.headless.keytab");
-		UserGroupInformation.loginUserFromKeytab("T93KOAI@HQ.NT.NEWYORKLIFE.COM", "C:\\Users\\t93koai\\Documents\\hive_jars\\t93koai.keytab");
+		//UserGroupInformation.loginUserFromKeytab("TIDUSER@TECH.HDP.HORTONWORKS.COM", "C:\\Users\\tiduser\\Documents\\hive_jars\\tiduser.keytab");
 		Connection con = DriverManager.getConnection(var_jdbcConnString, "", "");
-
-		// This is the knox connection string, needs ca cert to be imported into the java truststore being used
-		//Connection con = DriverManager.getConnection("jdbc:hive2://knox.tech.hdp.newyorklife.com/;ssl=true;transportMode=http;httpPath=gateway/default/hive","T93KOAI","xxxx");
 
 		String var_queryType=p.getProperty("hiveQueryType");
 		String var_query=p.getProperty("hiveQuery");
@@ -154,7 +149,6 @@ public class hiveJDBCV1 {
 		    	row += res.getString(i) + delim;
 		    	
 	        }
-	        //System.out.println(row);
 	        rows.add(row);
 	    }
 	    String fileNamePostFix = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
